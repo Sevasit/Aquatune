@@ -13,7 +13,7 @@ const Splash = ({navigation}) => {
       <View style={{flex: 0.95, justifyContent: 'center'}}>
         <Image
           style={{height: 200, width: 350}}
-          source={require('../pictures/logo-aq-01.png')}
+          source={require('../assets/logo-aq-01.png')}
         />
       </View>
       <View style={{flex: 0.1}}>

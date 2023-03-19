@@ -6,63 +6,35 @@ const Login = ({navigation}) => {
     <SafeAreaView>
       <View style={{height: '100%', alignItems: 'center'}}>
         <View style={{marginTop: 35, flex: 0.5}}>
-          <Text
-            style={{
-              color: 'rgb(0,174,239)',
-              fontSize: 20,
-              textAlign: 'right',
-              width: 350,
-              fontWeight: 500,
-            }}>
+          <Text className="text-xl font-bold text-sky-500 text-right w-[350]">
             Sign up
           </Text>
         </View>
         <View>
           <Image
             style={{height: 100, width: 300, marginTop: 20}}
-            source={require('../pictures/logo-aq-01.png')}
+            source={require('../assets/logo-aq-01.png')}
           />
-          <View style={{flexDirection: 'column'}}>
+          <View>
             <TextInput
-              style={{
-                marginTop: 50,
-                borderRadius: 10,
-                backgroundColor: 'rgb(219,220,221)',
-                paddingLeft: 15,
-                paddingRight: 15,
-              }}
+              className="bg-slate-200 mt-24 rounded-md p-3"
               placeholder={'Email Address'}
             />
             <TextInput
-              style={{
-                marginTop: 10,
-                borderRadius: 10,
-                marginBottom: 20,
-                backgroundColor: 'rgb(219,220,221)',
-                paddingLeft: 15,
-                paddingRight: 15,
-              }}
+              className="bg-slate-200 mt-5 rounded-md p-3"
               secureTextEntry={true}
               placeholder={'Password'}
             />
-            <Button
-              style={{
-                backgroundColor: 'rgb(0,174,239)',
-                borderRadius: 10,
-              }}
-              onPress={() => navigation.navigate('Persona')}
-              title="login"></Button>
+            <View className="mt-5">
+              <Button
+                onPress={() => navigation.navigate('Persona')}
+                title="login"></Button>
+            </View>
           </View>
         </View>
         <View style={{paddingTop: 50}}>
           <Text
-            style={{
-              color: 'rgb(0,174,239)',
-              fontSize: 20,
-              textAlign: 'center',
-              width: 350,
-              fontWeight: 500,
-            }}
+            className="text-xl font-bold text-sky-500"
             onPress={() => navigation.navigate('Register')}>
             Register
           </Text>
