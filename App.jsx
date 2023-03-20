@@ -5,6 +5,8 @@ import Splash from './screens/Splash';
 import Login from './screens/Login';
 import Persona from './screens/Persona';
 import Register from './screens/Register';
+import Quiz from './screens/Quiz';
+import Final from './screens/Final';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +32,16 @@ const App = () => {
         <Stack.Screen
           name="Register"
           component={Register}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Quiz"
+          component={Quiz}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Final"
+          component={Final}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -10,7 +10,7 @@ import {
 import React, {useState} from 'react';
 import {Imgs} from '../components/data';
 
-const Persona = () => {
+const Persona = ({navigation}) => {
   const [imgD, setImgD] = useState({
     src: require('../assets/สาหร่าย-01.png'),
     title: 'keen',
@@ -71,7 +71,7 @@ const Persona = () => {
         )}
       />
       <View className="pt-10 px-32">
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Quiz')}>
           <Text className="font-bold text-xl text-center capitalize text-sky-500 bg-slate-200 p-3 rounded-xl">
             Submit
           </Text>
