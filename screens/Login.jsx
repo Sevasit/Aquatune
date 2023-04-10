@@ -11,6 +11,8 @@ const Login = ({navigation}) => {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('signed in!');
+        setEmail('');
+        setPassword('');
         navigation.navigate('Persona');
       })
       .catch(err => alert(err.message));

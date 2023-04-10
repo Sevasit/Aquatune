@@ -29,11 +29,15 @@ const Register = ({navigation}) => {
 
     firestore()
       .collection('Users')
-      .add({
+      .doc(email)
+      .set({
         email: email,
         username: username,
         moblie: moblie,
-        image: '',
+        persona: {
+          titel: '',
+          image: '',
+        },
         score: '',
       })
       .then(() => {
