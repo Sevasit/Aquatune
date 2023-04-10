@@ -1,7 +1,47 @@
 import {View, Text, Image, TextInput, SafeAreaView, Button} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const Register = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [moblie, setMoblie] = useState('');
+  const [password, setPassword] = useState('');
+
+  const saveData = () => {
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('User account created & signed in!');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+
+        console.error(error);
+      });
+
+    firestore()
+      .collection('Users')
+      .add({
+        email: email,
+        username: username,
+        moblie: moblie,
+        image: '',
+        score: '',
+      })
+      .then(() => {
+        console.log('User added!');
+        navigation.navigate('Login');
+      });
+  };
+
   return (
     <SafeAreaView>
       <View style={{height: '100%', alignItems: 'center'}}>
@@ -17,27 +57,41 @@ const Register = ({navigation}) => {
           />
           <View style={{flexDirection: 'column'}}>
             <TextInput
+              value={email}
+              onChangeText={email => {
+                setEmail(email);
+              }}
               className="bg-slate-200 mt-24 rounded-md p-3"
               placeholder={'Email Address'}
             />
             <TextInput
+              value={username}
+              onChangeText={username => {
+                setUsername(username);
+              }}
               className="bg-slate-200 mt-5 rounded-md p-3"
               placeholder={'Username'}
             />
             <TextInput
+              value={moblie}
+              onChangeText={moblie => {
+                setMoblie(moblie);
+              }}
               className="bg-slate-200 mt-5 rounded-md p-3"
               placeholder={'Moblie'}
               secureTextEntry={true}
             />
             <TextInput
+              value={password}
+              onChangeText={password => {
+                setPassword(password);
+              }}
               className="bg-slate-200 mt-5 rounded-md p-3"
               placeholder={'Password'}
               secureTextEntry={true}
             />
             <View className="mt-5">
-              <Button
-                onPress={() => navigation.navigate('Login')}
-                title="Register"></Button>
+              <Button onPress={() => saveData()} title="Register"></Button>
             </View>
           </View>
         </View>
