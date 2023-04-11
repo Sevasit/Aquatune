@@ -7,14 +7,40 @@ import {
   TouchableOpacity,
   Button,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Imgs} from '../components/data';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const Persona = ({navigation}) => {
+  const [user, setUser] = useState();
+
   const [imgD, setImgD] = useState({
     src: require('../assets/สาหร่าย-01.png'),
     title: 'keen',
   });
+
+  function onAuthStateChanged(user) {
+    setUser(user);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  const submithandler = () => {
+    firestore()
+      .collection('Users')
+      .doc(user.email)
+      .update({
+        title: imgD.title,
+      })
+      .then(() => {
+        console.log('User updated!');
+        navigation.navigate('Quiz');
+      });
+  };
 
   return (
     <SafeAreaView>
@@ -71,7 +97,7 @@ const Persona = ({navigation}) => {
         )}
       />
       <View className="pt-10 px-32">
-        <TouchableOpacity onPress={() => navigation.navigate('Quiz')}>
+        <TouchableOpacity onPress={submithandler}>
           <Text className="font-bold text-xl text-center capitalize text-sky-500 bg-slate-200 p-3 rounded-xl">
             Submit
           </Text>

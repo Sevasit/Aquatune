@@ -1,11 +1,49 @@
 import {View, Image, Text, SafeAreaView, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {questions} from '../components/questions';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const Quiz = () => {
+  const ImgsMap = {
+    joy: require('../assets/สาหร่าย-01.png'),
+    mellow: require('../assets/สาหร่าย-02.png'),
+    fear: require('../assets/สาหร่าย-03.png'),
+    keen: require('../assets/สาหร่าย-04.png'),
+    bo: require('../assets/OAIDB01-05.png'),
+    nice: require('../assets/OAIDB01-06.png'),
+    nicha: require('../assets/OAIDB01-07.png'),
+  };
+
+  const [dataImg, setDataImg] = useState('joy');
+  const [user, setUser] = useState('');
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
+
+  function onAuthStateChanged(user) {
+    setUser(user);
+  }
+
+  async function fetchData(emailUser) {
+    const {_data, ...other} = await firestore()
+      .collection('Users')
+      .doc(emailUser)
+      .get();
+
+    setDataImg(_data.title);
+  }
+
+  setTimeout(() => {
+    fetchData(user.email);
+  }, 2000);
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+
+    return subscriber; // unsubscribe on unmount
+  }, []);
 
   const handleAnswerOptionClick = isCorrect => {
     if (isCorrect) {
@@ -111,7 +149,7 @@ const Quiz = () => {
             <Image
               style={{resizeMode: 'contain'}}
               className="h-[300] w-[300]"
-              source={require('../assets/สาหร่าย-03.png')}
+              source={ImgsMap[dataImg]}
             />
           </View>
         </SafeAreaView>

@@ -34,10 +34,7 @@ const Register = ({navigation}) => {
         email: email,
         username: username,
         moblie: moblie,
-        persona: {
-          titel: '',
-          image: '',
-        },
+        titel: '',
         score: '',
       })
       .then(() => {
