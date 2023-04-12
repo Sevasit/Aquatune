@@ -147,12 +147,14 @@ const Quiz = ({navigation}) => {
             <Text className="absolute text-black font-medium text-2xl top-[90] uppercase">
               Recommend Song
             </Text>
-            <Text className="absolute text-white font-medium  text-2xl top-[130] left-20 bg-sky-400 px-5 rounded-xl uppercase">
-              {musicValue}
-            </Text>
-            <Text className="absolute text-white font-medium  text-2xl top-[130] right-20 bg-sky-400 px-5 rounded-xl uppercase">
-              {colorValue}
-            </Text>
+            <View className="absolute top-[130px] flex flex-row gap-2 justify-center">
+              <Text className="text-white font-medium text-lg text-center bg-sky-400 px-4 py-1 rounded-xl uppercase">
+                {musicValue}
+              </Text>
+              <Text className="text-white font-medium text-lg text-center bg-sky-400 px-4 py-1 rounded-xl uppercase">
+                {colorValue}
+              </Text>
+            </View>
             <Image
               style={{resizeMode: 'contain'}}
               className="absolute h-[200] w-[200] top-[130]"

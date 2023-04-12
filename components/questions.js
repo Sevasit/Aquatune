@@ -27,4 +27,46 @@ export const questions = [
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
+  {
+    questionText: 'What is the capital of France?',
+    answerOptions: [
+      {answerText: require('../assets/true.png'), isCorrect: true},
+      {answerText: require('../assets/false.png'), isCorrect: false},
+    ],
+  },
+  {
+    questionText: 'What is the capital of France?',
+    answerOptions: [
+      {answerText: require('../assets/true.png'), isCorrect: true},
+      {answerText: require('../assets/false.png'), isCorrect: false},
+    ],
+  },
+  {
+    questionText: 'What is the capital of France?',
+    answerOptions: [
+      {answerText: require('../assets/true.png'), isCorrect: true},
+      {answerText: require('../assets/false.png'), isCorrect: false},
+    ],
+  },
+  {
+    questionText: 'What is the capital of France?',
+    answerOptions: [
+      {answerText: require('../assets/true.png'), isCorrect: true},
+      {answerText: require('../assets/false.png'), isCorrect: false},
+    ],
+  },
+  {
+    questionText: 'What is the capital of France?',
+    answerOptions: [
+      {answerText: require('../assets/true.png'), isCorrect: true},
+      {answerText: require('../assets/false.png'), isCorrect: false},
+    ],
+  },
+  {
+    questionText: 'What is the capital of France?',
+    answerOptions: [
+      {answerText: require('../assets/true.png'), isCorrect: true},
+      {answerText: require('../assets/false.png'), isCorrect: false},
+    ],
+  },
 ];
