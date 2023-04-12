@@ -67,6 +67,17 @@ const Quiz = ({navigation}) => {
       setShowScore(true);
       generateRandomMusicArray(score);
       generateColor(score);
+      // update db
+      firestore()
+        .collection('Users')
+        .doc(user.email)
+        .update({
+          score: score,
+        })
+        .then(() => {
+          console.log('User updated!');
+          navigation.navigate('Quiz');
+        });
     }
   };
 

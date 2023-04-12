@@ -48,7 +48,7 @@ const Register = ({navigation}) => {
       <View style={{height: '100%', alignItems: 'center'}}>
         <View style={{marginTop: 35, flex: 0.5}}>
           <Text className="text-xl font-bold text-sky-500 text-right w-[350]">
-            Register
+            Sign up
           </Text>
         </View>
         <View>
