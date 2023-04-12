@@ -4,7 +4,7 @@ import {questions} from '../components/questions';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-const Quiz = () => {
+const Quiz = ({navigation}) => {
   const ImgsMap = {
     joy: require('../assets/สาหร่าย-01.png'),
     mellow: require('../assets/สาหร่าย-02.png'),
@@ -17,22 +17,23 @@ const Quiz = () => {
 
   const [dataImg, setDataImg] = useState('joy');
   const [user, setUser] = useState('');
-
+  const [colorValue, setColorValue] = useState('');
+  const [musicValue, setMusicValue] = useState('');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
 
-  function onAuthStateChanged(user) {
-    setUser(user);
-  }
-
   async function fetchData(emailUser) {
-    const {_data, ...other} = await firestore()
-      .collection('Users')
-      .doc(emailUser)
-      .get();
+    try {
+      const {_data, ...other} = await firestore()
+        .collection('Users')
+        .doc(emailUser)
+        .get();
 
-    setDataImg(_data.title);
+      setDataImg(_data.title);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   setTimeout(() => {
@@ -40,9 +41,17 @@ const Quiz = () => {
   }, 2000);
 
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    const subscriber = auth().onAuthStateChanged(user => {
+      if (!user) {
+        navigation.navigate('Login');
+      }
 
-    return subscriber; // unsubscribe on unmount
+      setUser(user);
+    });
+
+    return () => {
+      subscriber();
+    }; // unsubscribe on unmount
   }, []);
 
   const handleAnswerOptionClick = isCorrect => {
@@ -56,11 +65,52 @@ const Quiz = () => {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
+      generateRandomMusicArray(score);
+      generateColor(score);
     }
   };
 
+  const generateRandomMusicArray = score => {
+    //Test function
+    const musicTileArray = {
+      0: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'], // -> depressed
+      1: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
+      2: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
+      3: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
+      4: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
+      5: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
+      6: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
+      7: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
+      8: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
+      9: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'], // -> happy
+    };
+
+    const musicArray = musicTileArray[score];
+    const music = musicArray[Math.floor(Math.random() * musicArray.length)];
+    setMusicValue(music);
+  };
+
+  function generateColor(score) {
+    const colors = {
+      0: 'red', // -> depressed
+      1: 'black',
+      2: 'green',
+      3: 'yellow',
+      4: 'blue',
+      5: 'red',
+      6: 'red',
+      7: 'red',
+      8: 'red',
+      9: 'red', // -> happy
+    };
+
+    const color = colors[score];
+
+    setColorValue(color);
+  }
+
   return (
-    <>
+    <View>
       {showScore ? (
         <SafeAreaView>
           <View className="flex flex-row justify-around items-center mt-5">
@@ -86,8 +136,11 @@ const Quiz = () => {
             <Text className="absolute text-black font-medium text-2xl top-[90] uppercase">
               Recommend Song
             </Text>
-            <Text className="absolute text-white font-medium  text-2xl top-[130] bg-sky-400 px-5 rounded-xl uppercase">
-              Lowkey - NIKI
+            <Text className="absolute text-white font-medium  text-2xl top-[130] left-20 bg-sky-400 px-5 rounded-xl uppercase">
+              {musicValue}
+            </Text>
+            <Text className="absolute text-white font-medium  text-2xl top-[130] right-20 bg-sky-400 px-5 rounded-xl uppercase">
+              {colorValue}
             </Text>
             <Image
               style={{resizeMode: 'contain'}}
@@ -98,9 +151,21 @@ const Quiz = () => {
           <View className="items-center">
             <Image
               style={{resizeMode: 'contain'}}
-              className="h-[300] w-[300]"
-              source={require('../assets/สาหร่าย-03.png')}
+              className="h-[250] w-[250]"
+              source={ImgsMap[dataImg]}
             />
+          </View>
+          <View className="pt-10 px-32">
+            <TouchableOpacity
+              onPress={() => {
+                setShowScore(false);
+                setScore(0);
+                setCurrentQuestion(0);
+              }}>
+              <Text className="font-bold text-xl text-center capitalize text-sky-500 bg-slate-200 p-3 rounded-xl">
+                Try again
+              </Text>
+            </TouchableOpacity>
           </View>
         </SafeAreaView>
       ) : (
@@ -154,7 +219,7 @@ const Quiz = () => {
           </View>
         </SafeAreaView>
       )}
-    </>
+    </View>
   );
 };
 

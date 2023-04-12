@@ -53,10 +53,17 @@ const Persona = ({navigation}) => {
           style={{height: 55, width: 100}}
           source={require('../assets/logo-aq-01.png')}
         />
-        <Image
-          style={{height: 30, width: 30}}
-          source={require('../assets/google-contacts.png')}
-        />
+        <TouchableOpacity
+          onPress={() => {
+            auth()
+              .signOut()
+              .then(() => console.log('User signed out!'));
+          }}>
+          <Image
+            style={{height: 30, width: 30}}
+            source={require('../assets/google-contacts.png')}
+          />
+        </TouchableOpacity>
       </View>
       <View className="items-center mt-2">
         <Image

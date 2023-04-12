@@ -2,15 +2,15 @@ export const questions = [
   {
     questionText: 'What is the capital of France?',
     answerOptions: [
-      {answerText: require('../assets/true.png'), isCorrect: false},
+      {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
   {
     questionText: 'Who is CEO of Tesla?',
     answerOptions: [
-      {answerText: require('../assets/true.png'), isCorrect: false},
-      {answerText: require('../assets/false.png'), isCorrect: true},
+      {answerText: require('../assets/true.png'), isCorrect: true},
+      {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
   {
@@ -23,7 +23,7 @@ export const questions = [
   {
     questionText: 'How many Harry Potter books are there?',
     answerOptions: [
-      {answerText: require('../assets/true.png'), isCorrect: false},
+      {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
