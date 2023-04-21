@@ -37,7 +37,7 @@ const Login = ({navigation}) => {
               onChangeText={email => {
                 setEmail(email);
               }}
-              className="bg-slate-200 mt-24 rounded-md p-3"
+              className="bg-slate-200 mt-24 rounded-md p-3 text-black"
               placeholder={'Email Address'}
             />
             <TextInput
@@ -45,7 +45,7 @@ const Login = ({navigation}) => {
               onChangeText={password => {
                 setPassword(password);
               }}
-              className="bg-slate-200 mt-5 rounded-md p-3"
+              className="bg-slate-200 mt-5 rounded-md p-3 text-black"
               secureTextEntry={true}
               placeholder={'Password'}
             />

@@ -10,10 +10,33 @@ const Register = ({navigation}) => {
   const [password, setPassword] = useState('');
 
   const saveData = () => {
+    if (
+      email.trim().length === 0 ||
+      username.trim().length === 0 ||
+      moblie.trim().length === 0 ||
+      password.trim().length === 0
+    ) {
+      alert('Please Fill your data');
+      return;
+    }
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         console.log('User account created & signed in!');
+        firestore()
+          .collection('Users')
+          .doc(email)
+          .set({
+            email: email,
+            username: username,
+            moblie: moblie,
+            titel: '',
+            score: '',
+          })
+          .then(() => {
+            console.log('User added!');
+            navigation.navigate('Login');
+          });
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
@@ -25,21 +48,6 @@ const Register = ({navigation}) => {
         }
 
         console.error(error);
-      });
-
-    firestore()
-      .collection('Users')
-      .doc(email)
-      .set({
-        email: email,
-        username: username,
-        moblie: moblie,
-        titel: '',
-        score: '',
-      })
-      .then(() => {
-        console.log('User added!');
-        navigation.navigate('Login');
       });
   };
 
@@ -62,7 +70,7 @@ const Register = ({navigation}) => {
               onChangeText={email => {
                 setEmail(email);
               }}
-              className="bg-slate-200 mt-24 rounded-md p-3"
+              className="bg-slate-200 mt-24 rounded-md p-3 text-black"
               placeholder={'Email Address'}
             />
             <TextInput
@@ -70,7 +78,7 @@ const Register = ({navigation}) => {
               onChangeText={username => {
                 setUsername(username);
               }}
-              className="bg-slate-200 mt-5 rounded-md p-3"
+              className="bg-slate-200 mt-5 rounded-md p-3 text-black"
               placeholder={'Username'}
             />
             <TextInput
@@ -78,7 +86,7 @@ const Register = ({navigation}) => {
               onChangeText={moblie => {
                 setMoblie(moblie);
               }}
-              className="bg-slate-200 mt-5 rounded-md p-3"
+              className="bg-slate-200 mt-5 rounded-md p-3 text-black"
               placeholder={'Moblie'}
               secureTextEntry={true}
             />
@@ -87,7 +95,7 @@ const Register = ({navigation}) => {
               onChangeText={password => {
                 setPassword(password);
               }}
-              className="bg-slate-200 mt-5 rounded-md p-3"
+              className="bg-slate-200 mt-5 rounded-md p-3 text-black"
               placeholder={'Password'}
               secureTextEntry={true}
             />

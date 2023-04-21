@@ -58,19 +58,19 @@ const Persona = ({navigation}) => {
           source={require('../assets/google-contacts.png')}
         />
       </View>
-      <View className="items-center mt-2">
+      <View className="items-center">
         <Image
-          style={{height: 300, width: 350, resizeMode: 'contain'}}
+          style={{height: 200, width: 250, resizeMode: 'contain'}}
           source={imgD.src}
         />
       </View>
       <View className="items-center">
-        <Text className="font-bold text-2xl capitalize text-sky-500 bg-slate-200 p-3 rounded-xl shadow-xl shadow-gray-800 px-10">
+        <Text className="font-bold text-2xl capitalize text-sky-500 bg-slate-200 p-3 rounded-xl shadow-xl shadow-gray-800 px-5">
           {imgD.title}
         </Text>
       </View>
       <FlatList
-        className="mt-20"
+        className="mt-5"
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         data={Imgs}
@@ -84,13 +84,13 @@ const Persona = ({navigation}) => {
                 });
               }}>
               <Image
-                className="w-[150] h-[150] bg-slate-200 ml-3 rounded-full"
+                className="w-[120] h-[120] bg-slate-200 ml-3 rounded-full"
                 source={item.src}
                 key={index}
                 style={{resizeMode: 'contain'}}
               />
             </TouchableOpacity>
-            <Text className="font-bold text-2xl capitalize text-black bg-sky-300 rounded-xl shadow-xl shadow-gray-800 px-10 py-1">
+            <Text className="font-bold text-xl capitalize text-black bg-sky-300 rounded-xl shadow-xl shadow-gray-800 px-10 py-1">
               {item.title}
             </Text>
           </View>

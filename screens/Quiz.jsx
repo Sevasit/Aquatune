@@ -141,7 +141,7 @@ const Quiz = ({navigation}) => {
           <View className="items-center pt-10 relative">
             <Image
               style={{resizeMode: 'contain'}}
-              className="h-[350] w-[350]"
+              className="h-[300] w-[300]"
               source={require('../assets/message.png')}
             />
             <Text className="absolute text-black font-medium text-2xl top-[90] uppercase">
@@ -157,18 +157,18 @@ const Quiz = ({navigation}) => {
             </View>
             <Image
               style={{resizeMode: 'contain'}}
-              className="absolute h-[200] w-[200] top-[130]"
+              className="absolute h-[150] w-[150] top-[135]"
               source={require('../assets/sound.png')}
             />
           </View>
           <View className="items-center">
             <Image
               style={{resizeMode: 'contain'}}
-              className="h-[250] w-[250]"
+              className="h-[200] w-[200]"
               source={ImgsMap[dataImg]}
             />
           </View>
-          <View className="pt-10 px-32">
+          <View className="px-32">
             <TouchableOpacity
               onPress={() => {
                 setShowScore(false);
@@ -201,10 +201,10 @@ const Quiz = ({navigation}) => {
             <View className="items-center pt-10 relative">
               <Image
                 style={{resizeMode: 'contain'}}
-                className="h-[350] w-[350]"
+                className="h-[280] w-[280]"
                 source={require('../assets/message.png')}
               />
-              <Text className="absolute w-[250px] text-black font-bold text-2xl top-[40%]">
+              <Text className="absolute w-[200px] text-black font-bold text-xl top-[40%]">
                 {questions[currentQuestion].questionText}
               </Text>
             </View>
@@ -226,7 +226,7 @@ const Quiz = ({navigation}) => {
           <View className="items-center">
             <Image
               style={{resizeMode: 'contain'}}
-              className="h-[300] w-[300]"
+              className="h-[200] w-[200]"
               source={ImgsMap[dataImg]}
             />
           </View>
