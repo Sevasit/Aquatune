@@ -1,69 +1,69 @@
 export const questions = [
   {
-    questionText: 'What is the capital of France?',
+    questionText: 'How are you today?',
     answerOptions: [
       {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
   {
-    questionText: 'Who is CEO of Tesla?',
+    questionText: 'Is the car stuck today?',
+    answerOptions: [
+      {answerText: require('../assets/true.png'), isCorrect: false},
+      {answerText: require('../assets/false.png'), isCorrect: true},
+    ],
+  },
+  {
+    questionText: 'Have you eaten rice yet?',
     answerOptions: [
       {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
   {
-    questionText: 'The iPhone was created by which company?',
+    questionText: 'Do you like Thai food?',
     answerOptions: [
       {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
   {
-    questionText: 'How many Harry Potter books are there?',
+    questionText: 'Do you like sports?',
     answerOptions: [
       {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
   {
-    questionText: 'What is the capital of France?',
+    questionText: 'Are you married?',
     answerOptions: [
       {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
   {
-    questionText: 'What is the capital of France?',
+    questionText: 'Do you like cooking?',
     answerOptions: [
       {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
   {
-    questionText: 'What is the capital of France?',
+    questionText: 'Do you love animals?',
     answerOptions: [
       {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
   {
-    questionText: 'What is the capital of France?',
+    questionText: 'Do you have any hobbies?',
     answerOptions: [
       {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},
     ],
   },
   {
-    questionText: 'What is the capital of France?',
-    answerOptions: [
-      {answerText: require('../assets/true.png'), isCorrect: true},
-      {answerText: require('../assets/false.png'), isCorrect: false},
-    ],
-  },
-  {
-    questionText: 'What is the capital of France?',
+    questionText: 'Do you like hiking?',
     answerOptions: [
       {answerText: require('../assets/true.png'), isCorrect: true},
       {answerText: require('../assets/false.png'), isCorrect: false},

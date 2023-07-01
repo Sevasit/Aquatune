@@ -84,16 +84,16 @@ const Quiz = ({navigation}) => {
   const generateRandomMusicArray = score => {
     //Test function
     const musicTileArray = {
-      0: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'], // -> depressed
-      1: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
-      2: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
-      3: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
-      4: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
-      5: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
-      6: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
-      7: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
-      8: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'],
-      9: ['lowkey', 'plastic love', 'sunsets', 'sos', 'heyho'], // -> happy
+      0: ['Howls Moving Castle', 'All About That Day'], // -> depressed
+      1: ['Always With Me', 'Vacation Time'],
+      2: ['Kiki’s Delivery Service', 'マルシィ 未来図'],
+      3: ['Path of the Wind', 'ไม่พรากจาก | 莫离 - 鞠婧祎'],
+      4: ['Summer of Farewells', '원래 좋아하면 이렇게 되나 봐'],
+      5: ['ก่อนที่เธอจะลืมฝัน', 'Shinunoga E-Wa'],
+      6: ['ซูมูจือ - จางเซียวถัง', '芒种 - 音阙诗听&赵方婧'],
+      7: ['จะมอบความรัก', '踊り子 / Vaundy'],
+      8: ['Until I Found You', 'I Love You So'],
+      9: ['Conan Gray - Heather', 'Justin Bieber - Intentions'], // -> happy
     };
 
     const musicArray = musicTileArray[score];
@@ -103,16 +103,16 @@ const Quiz = ({navigation}) => {
 
   function generateColor(score) {
     const colors = {
-      0: 'red', // -> depressed
-      1: 'black',
-      2: 'green',
-      3: 'yellow',
-      4: 'blue',
-      5: 'red',
-      6: 'red',
-      7: 'red',
-      8: 'red',
-      9: 'red', // -> happy
+      0: 'purple', // -> depressed
+      1: 'purple',
+      2: 'blue',
+      3: 'blue',
+      4: 'green',
+      5: 'green',
+      6: 'yellow',
+      7: 'yellow',
+      8: 'pink',
+      9: 'pink', // -> happy
     };
 
     const color = colors[score];
